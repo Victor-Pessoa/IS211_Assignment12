@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Quiz Result</title>
+</head>
+<body>
+    <h1>Add Quiz Result</h1>
+    <form method="POST" action="{{ url_for('add_quiz_result') }}">
+        <label for="student">Student:</label>
+        <select name="student" required>
+            {% for student in students %}
+            <option value="{{ student[0] }}">{{ student[1] }} {{ student[2] }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="quiz">Quiz:</label>
+        <select name="quiz" required>
+            {% for quiz in quizzes %}
+            <option value="{{ quiz[0] }}">{{ quiz[1] }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="grade">Grade:</label>
+        <input type="number" name="grade" min="0" max="100" required><br>
+        <input type="submit" value="Add Result">
+    </form>
+</body>
+</html>

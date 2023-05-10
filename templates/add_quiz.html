@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Quiz</title>
+</head>
+<body>
+    <h1>Add Quiz</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form method="POST" action="{{ url_for('add_quiz') }}">
+        <label for="subject">Subject:</label>
+        <input type="text" name="subject" required><br>
+        <label for="num_questions">Number of Questions:</label>
+        <input type="number" name="num_questions" required><br>
+        <label for="quiz_date">Quiz Date:</label>
+        <input type="date" name="quiz_date" required><br>
+        <input type="submit" value="Add Quiz">
+    </form>
+</body>
+</html>
